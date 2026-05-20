@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Global Daily Recipes</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body class="recipe-theme">
+
+<div class="topbar">
+    <div class="brand">CookSmart Recipes</div>
+    <button class="verifai-btn" onclick="runVerifAI()">VerifAI</button>
+</div>
+
+<div class="navbar">
+    <a href="#">Recipes</a>
+    <a href="#">Meal Plans</a>
+    <a href="#">Quick Meals</a>
+    <a href="#">Healthy</a>
+    <a href="#">Budget</a>
+</div>
+
+<div class="page">
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <!-- HERO RECIPE -->
+        <div class="card featured">
+            <img src="../assets/images/pie.png" alt="Shepherds Pie">
+            <h1>Classic Shepherd’s Pie</h1>
+            <p>
+                A warm, comforting dish made with seasoned lamb, vegetables, and creamy mashed potato topping.
+            </p>
+        </div>
+
+        <!-- INGREDIENTS -->
+        <div class="card">
+            <h2>Ingredients</h2>
+            <p>500g minced lamb</p>
+            <p>1 onion, diced</p>
+            <p>2 carrots</p>
+            <p>1 cup peas</p>
+            <p>Tomato paste</p>
+            <p>Potatoes + butter</p>
+        </div>
+
+        <!-- METHOD -->
+        <div class="card">
+            <h2>Cooking Steps</h2>
+            <p>1. Brown lamb in pan</p>
+            <p>2. Add vegetables</p>
+            <p>3. Simmer with sauce</p>
+            <p>4. Mash potatoes</p>
+            <p>5. Bake until golden</p>
+        </div>
+
+        <!-- FOOD SAFETY (REAL CONTENT) -->
+        <div class="card">
+            <img src="../assets/images/genAI-foodsafety.jpg">
+            <h3>Food Safety Tips</h3>
+            <p>Always cook meat thoroughly and avoid cross-contamination in kitchens.</p>
+        </div>
+
+        <!-- MISLEADING CONTENT -->
+        <div class="card">
+            <img src="../assets/images/genAI-food.jpg">
+            <h3>Extreme Diet Trend Goes Viral</h3>
+            <p>Claims of rapid weight loss with no verified nutritional basis.</p>
+        </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="card">
+            <h3>Sponsored Recipe Kit</h3>
+            <p>Fresh ingredients delivered weekly for home cooking.</p>
+            <p style="color:green;">trusted-mealbox.example</p>
+        </div>
+
+        <div class="card">
+            <h3>Sponsored</h3>
+            <p>Lose weight FAST without diet changes!</p>
+            <p style="color:red;">miracleburn.example</p>
+        </div>
+
+        <div class="card">
+            <h3>Kitchen Assistant</h3>
+            <p>VerifAI monitoring recipe safety claims...</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

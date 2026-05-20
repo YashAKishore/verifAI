@@ -1,0 +1,292 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: #f2f4f7;
+    color: #111;
+}
+
+/* ================= TOP BAR ================= */
+.topbar {
+    background: #0b0c10;
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ================= NAV BAR ================= */
+.navbar {
+    background: #1f2833;
+    display: flex;
+    gap: 15px;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.navbar a:hover {
+    opacity: 1;
+}
+
+/* ================= MAIN LAYOUT ================= */
+.page {
+    display: grid;
+    /* Two-column layout: 3 parts content area, 1 part sidebar */
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* Responsively grids out all standard news cards */
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* ================= CARD SYSTEM ================= */
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
+    /* Width is handled responsively by the grid engine */
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    padding: 15px;
+    transition: 0.2s ease;
+}
+
+/* Hover effect */
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+/* ================= IMAGES ================= */
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+/* ================= TEXT ================= */
+.card h1,
+.card h2,
+.card h3 {
+    margin: 10px 0 5px 0;
+    line-height: 1.3;
+}
+
+.card p {
+    margin: 5px 0;
+    color: #444;
+    line-height: 1.4;
+}
+
+/* ================= FEATURED CARD ================= */
+/* Forces the top card to span completely across the news grid rows */
+.card.featured {
+    grid-column: 1 / -1;
+}
+
+.card.featured img {
+    height: 320px; /* Gives the focal point story a larger impact image */
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar .card {
+    font-size: 14px;
+}
+
+/* ================= VERIFAI BUTTON ================= */
+.verifai-btn {
+    background: #00c853;
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* ================= VERIFAI BADGE ================= */
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+}
+
+body.recipe-theme {
+    background: #fff7f0;
+    color: #2b1d16;
+}
+
+/* Top bar different colour */
+body.recipe-theme .topbar {
+    background: #7a3e2b;
+}
+
+/* Nav bar warm tone */
+body.recipe-theme .navbar {
+    background: #a85c41;
+}
+
+/* Page layout becomes vertical flow (not news grid) */
+body.recipe-theme .page {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Main column becomes cookbook style */
+body.recipe-theme .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 3;
+}
+
+/* Recipe cards are now WIDE panels (not tiles) */
+body.recipe-theme .card {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Featured recipe becomes hero style */
+body.recipe-theme .card.featured {
+    border-left: 6px solid #d9773f;
+}
+
+/* Images taller for food emphasis */
+body.recipe-theme .card img {
+    height: 260px;
+    border-radius: 12px;
+}
+
+/* Sidebar becomes “ingredient / ads panel” */
+body.recipe-theme .sidebar {
+    flex: 1;
+}
+
+/* Sidebar cards styled like shopping modules */
+body.recipe-theme .sidebar .card {
+    background: #fff3e6;
+    border-left: 4px solid #d9773f;
+}
+
+/* Buttons updated */
+body.recipe-theme .verifai-btn {
+    background: #ff7a3d;
+}
+
+body.shop-theme {
+    background: #f5f7fb;
+    color: #1a1a1a;
+}
+
+/* Top bar */
+body.shop-theme .topbar {
+    background: #1e2a38;
+}
+
+/* Nav */
+body.shop-theme .navbar {
+    background: #2c3e50;
+}
+
+/* Layout */
+body.shop-theme .page {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Product grid */
+body.shop-theme .main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 15px;
+    flex: 3;
+}
+
+/* Product cards (smaller, tighter than news/recipes) */
+body.shop-theme .card {
+    width: 100%;
+    height: 360px;
+    padding: 12px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Product images */
+body.shop-theme .card img {
+    height: 140px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Prices */
+.price {
+    font-weight: bold;
+    color: #1e7a3a;
+    margin-top: auto;
+}
+
+/* Ads styling (VERY important for VerifAI demo) */
+.ad {
+    border: 2px dashed #ff9800;
+    background: #fff8e6;
+}
+
+/* Fake sketchy ads */
+.ad.sketchy {
+    border: 2px dashed red;
+    background: #fff0f0;
+}
+
+/* VerifAI button */
+body.shop-theme .verifai-btn {
+    background: #00a8ff;
+}
