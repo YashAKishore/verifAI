@@ -21,7 +21,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* ================= NAV BAR ================= */
+/* ================= NAV ================= */
 .navbar {
     background: #1f2833;
     display: flex;
@@ -40,64 +40,67 @@ body {
     opacity: 1;
 }
 
-/* ================= MAIN LAYOUT ================= */
+/* ================= LAYOUT ================= */
 .page {
     display: grid;
-    /* Two-column layout: 3 parts content area, 1 part sidebar */
     grid-template-columns: 3fr 1fr;
     gap: 20px;
     padding: 20px;
     max-width: 1400px;
     margin: 0 auto;
-    align-items: flex-start;
 }
 
-/* Responsively grids out all standard news cards */
 .main-content {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 20px;
 }
 
-/* ================= CARD SYSTEM ================= */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ================= CARD ================= */
 .card {
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-
-    /* Width is handled responsively by the grid engine */
-    width: 100%;
-    box-sizing: border-box;
-
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     position: relative;
-    padding: 15px;
+    overflow: hidden;
     transition: 0.2s ease;
 }
 
-/* Hover effect */
 .card:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.12);
 }
 
-/* ================= IMAGES ================= */
 .card img {
     width: 100%;
     height: 180px;
     object-fit: cover;
     border-radius: 6px;
-    flex-shrink: 0;
+}
+
+/* featured */
+.card.featured {
+    grid-column: 1 / -1;
+}
+
+.card.featured img {
+    height: 320px;
 }
 
 /* ================= TEXT ================= */
 .card h1,
 .card h2,
 .card h3 {
-    margin: 10px 0 5px 0;
-    line-height: 1.3;
+    margin: 10px 0 5px;
 }
 
 .card p {
@@ -106,187 +109,212 @@ body {
     line-height: 1.4;
 }
 
-/* ================= FEATURED CARD ================= */
-/* Forces the top card to span completely across the news grid rows */
-.card.featured {
-    grid-column: 1 / -1;
+/* ================= BADGES ================= */
+.badge {
+    position: relative;
+    font-size: 18px;
+    background: rgba(255,255,255,0.95);
+    padding: 4px 6px;
+    border-radius: 6px;
+    cursor: help;
 }
 
-.card.featured img {
-    height: 320px; /* Gives the focal point story a larger impact image */
-}
-
-/* ================= SIDEBAR ================= */
-.sidebar {
+.badge-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    gap: 6px;
+    z-index: 10;
 }
 
-.sidebar .card {
-    font-size: 14px;
+/* tooltip */
+.badge::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 120%;
+    right: 0;
+
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 6px 8px;
+    font-size: 11px;
+    border-radius: 6px;
+    white-space: nowrap;
+
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: 0.15s ease;
+    pointer-events: none;
 }
 
-/* ================= VERIFAI BUTTON ================= */
+.badge:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= AI IMAGE BADGE ================= */
+.img-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #111;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    z-index: 50;
+}
+
+/* tooltip */
+.img-badge .tooltip {
+    position: absolute;
+    top: 35px;
+    left: 0;
+
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    width: 220px;
+    font-size: 12px;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.15s ease;
+    z-index: 9999;
+}
+
+.img-badge:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ================= BUTTON ================= */
 .verifai-btn {
     background: #00c853;
     border: none;
     padding: 8px 12px;
     color: white;
-    cursor: pointer;
     border-radius: 6px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-/* ================= VERIFAI BADGE ================= */
-.badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 18px;
-}
+/* ================= THEMES ================= */
 
+/* RECIPE */
 body.recipe-theme {
     background: #fff7f0;
     color: #2b1d16;
 }
 
-/* Top bar different colour */
 body.recipe-theme .topbar {
     background: #7a3e2b;
 }
 
-/* Nav bar warm tone */
 body.recipe-theme .navbar {
     background: #a85c41;
 }
 
-/* Page layout becomes vertical flow (not news grid) */
-body.recipe-theme .page {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Main column becomes cookbook style */
-body.recipe-theme .main-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 3;
-}
-
-/* Recipe cards are now WIDE panels (not tiles) */
-body.recipe-theme .card {
-    width: 100%;
-    height: auto;
-    border-radius: 14px;
-    background: #fff;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
-
-/* Featured recipe becomes hero style */
-body.recipe-theme .card.featured {
-    border-left: 6px solid #d9773f;
-}
-
-/* Images taller for food emphasis */
-body.recipe-theme .card img {
-    height: 260px;
-    border-radius: 12px;
-}
-
-/* Sidebar becomes “ingredient / ads panel” */
-body.recipe-theme .sidebar {
-    flex: 1;
-}
-
-/* Sidebar cards styled like shopping modules */
 body.recipe-theme .sidebar .card {
     background: #fff3e6;
-    border-left: 4px solid #d9773f;
 }
 
-/* Buttons updated */
-body.recipe-theme .verifai-btn {
-    background: #ff7a3d;
-}
-
+/* SHOP */
 body.shop-theme {
     background: #f5f7fb;
-    color: #1a1a1a;
 }
 
-/* Top bar */
 body.shop-theme .topbar {
     background: #1e2a38;
 }
 
-/* Nav */
 body.shop-theme .navbar {
     background: #2c3e50;
 }
 
-/* Layout */
-body.shop-theme .page {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
-/* Product grid */
 body.shop-theme .main-content {
-    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 15px;
-    flex: 3;
 }
 
-/* Product cards (smaller, tighter than news/recipes) */
 body.shop-theme .card {
-    width: 100%;
     height: 360px;
-    padding: 12px;
-    border-radius: 10px;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
 }
 
-/* Product images */
-body.shop-theme .card img {
-    height: 140px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-/* Prices */
 .price {
     font-weight: bold;
     color: #1e7a3a;
     margin-top: auto;
 }
 
-/* Ads styling (VERY important for VerifAI demo) */
+/* ads */
 .ad {
     border: 2px dashed #ff9800;
     background: #fff8e6;
 }
 
-/* Fake sketchy ads */
 .ad.sketchy {
     border: 2px dashed red;
     background: #fff0f0;
 }
 
-/* VerifAI button */
-body.shop-theme .verifai-btn {
-    background: #00a8ff;
+/* ================= PAGE SWITCHER ================= */
+.page-switcher {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(20,20,20,0.95);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 9999;
+}
+
+.page-switcher button {
+    background: #00c853;
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.page-switcher button:hover {
+    opacity: 0.85;
+}
+
+/* ================= PAGE SYSTEM ================= */
+.page-section {
+    display: none;
+}
+
+.active-page {
+    display: block;
+}
+
+.verifai-float {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 10000;
+}
+
+.verifai-float .verifai-btn {
+    background: #00c853;
+    border: none;
+    padding: 10px 14px;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: 0.2s ease;
+}
+
+.verifai-float .verifai-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
 }
