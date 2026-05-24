@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "VerifAI",
+  "version": "1.0.0",
+  "description": "Lightweight misinformation, advertising, and AI-generated content detection mockup.",
+
+  //giving current page and storage for state permissions
+
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+
+  //allow scanning on all sites
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  //clicking the extension opens popup
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "VerifAI"
+  },
+
+  //chrome injects scanner in webpages automatically
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+
+      //run after page loads
+      "run_at": "document_idle"
+    }
+  ],
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
