@@ -30,9 +30,10 @@ function scanText(el) {
 
     if (!text) return;
 
-    if (text.includes("miracle") || text.includes("lose weight fast")) {
+    if (matches(text, RED_FLAGS)) {
         el.style.outline = "2px solid red";
-    } else if (text.includes("sponsored") || text.includes("sale")) {
+    }
+    else if (matches(text, ORANGE_FLAGS)) {
         el.style.outline = "2px solid orange";
     }
 }
@@ -50,3 +51,47 @@ function clearAll() {
         el.style.outline = "none";
     });
 }
+
+function matches(text, list) {
+    return list.some(flag => text.includes(flag));
+}
+
+const RED_FLAGS = [
+    "miracle",
+    "doctors hate",
+    "secret hack",
+    "guaranteed results",
+    "no diet",
+    "no exercise",
+    "click now",
+    "instant results",
+    "rapid weight loss",
+    "lose 10kg",
+    "burn fat fast",
+    "5 days",
+    "7 days",
+    "hidden cure",
+    "weight loss trick",
+    "shocking",
+    "this one trick",
+    "you won't believe"
+];
+
+const ORANGE_FLAGS = [
+    "sponsored",
+    "ad",
+    "advertisement",
+    "sale",
+    "discount",
+    "deal",
+    "limited offer",
+    "shop now",
+    "visit store",
+    "promo",
+    "affiliate",
+    "partner content",
+    "recommended",
+    "trending deal"
+];
+
+scanPage();
