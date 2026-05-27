@@ -7,20 +7,6 @@ VerifAI is a Chrome extension that performs real-time analysis of webpage conten
 
 ---
 
-## Live Demo (No Installation Required)
-
-A fully interactive demonstration of the system is available here:
-
-👉 https://yashakishore.github.io/verifAI/test-pages/pages/
-
-This demo simulates:
-- Content scanning behaviour
-- Risk classification system
-- Badge and highlight UI interactions
-- Example misinformation and advertisement cases
-
----
-
 ## Features
 
 - Real-time webpage scanning of selected DOM elements
@@ -57,11 +43,14 @@ VerifAI operates using a rule-based content analysis pipeline:
 To run the full extension locally:
 
 1. Download or clone this repository
-2. Open Google Chrome and navigate to:
-3. 3. Enable **Developer Mode** (top-right toggle)
+2. Open Google Chrome and navigate to: chrome://extensions/
+3. Enable **Developer Mode** (top-right toggle)
 4. Click **Load unpacked**
 5. Select the `/extension` folder from this repository
+![img.png](instructions.png)
 6. Pin the extension for easy access
+
+If extension cannot be downloaded and installed then navigate to the Test Pages (Controlled Evaluation Environment) for a slightly restricted version of the extension built into the webpage.
 
 ---
 
@@ -95,7 +84,7 @@ This environment provides:
 - AI-generated text and image examples
 - Consistent DOM structure for testing detection accuracy
 
-It is designed to ensure reliable evaluation even if the extension cannot be installed due to browser restrictions.
+It is designed to ensure reliable evaluation even if the extension cannot be installed due to browser restrictions, please keep in mind this is heavily restricted and less aesthetically refined.
 
 ---
 
